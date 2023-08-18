@@ -1,0 +1,21 @@
+packages:
+  - type: github_release
+    repo_owner: casey
+    repo_name: just
+    description: Just a command runner
+    supported_envs:
+      - darwin
+      - linux
+      - amd64
+    rosetta2: true
+    asset: just-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}
+    replacements:
+      darwin: apple-darwin
+      linux: unknown-linux-musl
+      amd64: x86_64
+      arm64: aarch64
+      windows: pc-windows-msvc
+    format: tar.gz
+    overrides:
+      - goos: windows
+        format: zip

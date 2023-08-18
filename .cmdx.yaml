@@ -1,0 +1,44 @@
+---
+# the configuration file of cmdx - task runner
+# https://github.com/sulaiman-coder/cmdx
+tasks:
+  - name: install
+    short: i
+    description: install all packages
+    usage: install all packages
+    script: khulnasoft -c khulnasoft-all.yaml i --test
+  - name: test
+    short: t
+    description: test
+    usage: test
+    script: khulnasoft i --test
+  - name: exec
+    short: x
+    description: exec with khulnasoft-all.yaml
+    usage: exec with khulnasoft-all.yaml
+    script: khulnasoft_CONFIG=khulnasoft-all.yaml khulnasoft exec -- {{._builtin.args_string}}
+  - name: which
+    short: w
+    description: khulnasoft which with khulnasoft-all.yaml
+    usage: khulnasoft which with khulnasoft-all.yaml
+    script: "khulnasoft_CONFIG=khulnasoft-all.yaml khulnasoft which {{.package}}"
+    args:
+      - name: package
+        required: true
+  - name: generate
+    short: g
+    description: khulnasoft generate with khulnasoft-all.yaml
+    usage: khulnasoft generate with khulnasoft-all.yaml
+    script: khulnasoft -c khulnasoft-all.yaml g
+  - name: release
+    short: r
+    description: release the new version
+    usage: release the new version
+    script: |
+      git tag -m "chore: release {{.version}}" "{{.version}}"
+      git push origin "{{.version}}"
+    args:
+      - name: version
+        required: true
+        validate:
+          - regexp: "^v\\d+\\.\\d+.\\d+(-\\d+)?$"

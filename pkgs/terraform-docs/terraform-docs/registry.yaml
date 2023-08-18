@@ -1,0 +1,18 @@
+packages:
+  - type: github_release
+    repo_owner: terraform-docs
+    repo_name: terraform-docs
+    description: Generate documentation from Terraform modules in various output formats
+    supported_envs:
+      - darwin
+      - linux
+      - amd64
+    asset: terraform-docs-{{.Version}}-{{.OS}}-{{.Arch}}.{{.Format}}
+    format: tar.gz
+    overrides:
+      - goos: windows
+        format: zip
+    checksum:
+      type: github_release
+      asset: terraform-docs-{{.Version}}.sha256sum
+      algorithm: sha256

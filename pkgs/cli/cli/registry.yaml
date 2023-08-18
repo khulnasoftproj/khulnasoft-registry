@@ -1,0 +1,45 @@
+packages:
+  - type: github_release
+    repo_owner: cli
+    repo_name: cli
+    description: GitHub’s official command line tool
+    asset: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+    format: zip
+    files:
+      - name: gh
+        src: gh_{{trimV .Version}}_{{.OS}}_{{.Arch}}/bin/gh
+    overrides:
+      - goos: linux
+        format: tar.gz
+      - &cli_cli_windows_override
+        goos: windows
+        format: zip
+        files:
+          - name: gh
+            src: bin/gh.exe
+    replacements:
+      darwin: macOS
+    checksum:
+      type: github_release
+      asset: gh_{{trimV .Version}}_checksums.txt
+      algorithm: sha256
+    version_constraint: semver(">= 2.28.0")
+    version_overrides:
+      - version_constraint: semver(">= 2.24.0")
+        format: tar.gz
+        overrides:
+          - *cli_cli_windows_override
+      - version_constraint: semver(">= 2.20.1")
+        format: tar.gz
+        overrides:
+          - *cli_cli_windows_override
+        rosetta2: true
+      - version_constraint: semver("< 2.20.1")
+        format: tar.gz
+        overrides:
+          - *cli_cli_windows_override
+        supported_envs:
+          - darwin
+          - linux
+          - amd64
+        rosetta2: true

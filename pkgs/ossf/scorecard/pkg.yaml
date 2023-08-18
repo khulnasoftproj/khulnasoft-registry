@@ -1,0 +1,6 @@
+packages:
+  - name: ossf/scorecard@v4.12.0
+  - name: ossf/scorecard
+    version: v4.5.0
+  - name: ossf/scorecard
+    version: v4.4.0

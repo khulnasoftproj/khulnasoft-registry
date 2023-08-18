@@ -1,0 +1,49 @@
+packages:
+  - type: github_release
+    repo_owner: tektoncd
+    repo_name: cli
+    description: A CLI for interacting with Tekton
+    rosetta2: true
+    asset: tkn_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+    files:
+      - name: tkn
+    format: tar.gz
+    overrides:
+      - goos: windows
+        format: zip
+      - goos: darwin
+        asset: tkn_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
+    version_constraint: semver(">= 0.28.0")
+    # https://github.com/tektoncd/cli/pull/1745
+    # arm64 was replaced to aarch64
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+      arm64: aarch64
+    version_overrides:
+      # darwin universal binary
+      # https://github.com/tektoncd/cli/pull/1528
+      - version_constraint: semver(">= 0.24.0")
+        replacements:
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+          386: i386
+          amd64: x86_64
+      - version_constraint: "true"
+        replacements:
+          darwin: Darwin
+          linux: Linux
+          windows: Windows
+          386: i386
+          amd64: x86_64
+        overrides:
+          - goos: windows
+            format: zip
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256

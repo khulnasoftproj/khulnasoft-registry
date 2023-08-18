@@ -1,0 +1,15 @@
+packages:
+  - type: github_release
+    repo_owner: kool-dev
+    repo_name: kool
+    description: "From local development to the cloud: development workflow made easy"
+    format: raw
+    asset: kool-{{.OS}}-{{.Arch}}
+    supported_envs:
+      - darwin
+      - linux
+      - amd64
+    checksum:
+      type: github_release
+      asset: "{{.Asset}}.sha256"
+      algorithm: sha256

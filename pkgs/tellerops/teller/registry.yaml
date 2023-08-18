@@ -1,0 +1,18 @@
+packages:
+  - type: github_release
+    repo_owner: tellerops
+    repo_name: teller
+    aliases:
+      - name: SpectralOps/teller
+    description: A secrets management tool for developers built in Go - never leave your command line for secrets
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+    asset: teller_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256

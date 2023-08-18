@@ -1,0 +1,13 @@
+packages:
+  - type: github_release
+    repo_owner: google
+    repo_name: gke-policy-automation
+    asset: gke-policy-automation_{{trimV .Version}}_{{.OS}}_{{.Arch}}.zip
+    files:
+      - name: gke-policy
+        src: gke-policy
+    description: Tool and policy library for reviewing Google Kubernetes Engine clusters against best practices
+    checksum:
+      type: github_release
+      asset: gke-policy-automation_{{trimV .Version}}_SHA256SUMS
+      algorithm: sha256

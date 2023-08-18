@@ -1,0 +1,49 @@
+packages:
+  - type: github_release
+    repo_owner: terraform-linters
+    repo_name: tflint
+    description: A Pluggable Terraform Linter
+    asset: tflint_{{.OS}}_{{.Arch}}.{{.Format}}
+    format: zip
+    supported_envs:
+      - darwin
+      - linux
+      - amd64
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256
+      cosign:
+        cosign_experimental: true
+        opts:
+          - --signature
+          - https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.keyless.sig
+          - --certificate
+          - https://github.com/terraform-linters/tflint/releases/download/{{.Version}}/checksums.txt.pem
+    version_constraint: semver(">= 0.36.0")
+    version_overrides:
+      - version_constraint: semver(">= 0.33.0")
+        checksum: &tflint_checksum_2
+          type: github_release
+          asset: checksums.txt
+          algorithm: sha256
+      - version_constraint: semver(">= 0.32.1")
+        checksum: *tflint_checksum_2
+      - version_constraint: semver(">= 0.32.0")
+        checksum: *tflint_checksum_2
+        rosetta2: true
+      - version_constraint: semver(">= 0.29.1")
+        checksum: *tflint_checksum_2
+      - version_constraint: semver(">= 0.8.0")
+        checksum: *tflint_checksum_2
+        supported_envs:
+          - darwin
+          - amd64
+        rosetta2: true
+      - version_constraint: semver("< 0.8.0")
+        supported_envs:
+          - darwin
+          - amd64
+        rosetta2: true
+        checksum:
+          enabled: false

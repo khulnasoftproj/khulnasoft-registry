@@ -1,0 +1,23 @@
+packages:
+  - type: github_release
+    repo_owner: ginuerzh
+    repo_name: gost
+    description: GO Simple Tunnel - a simple tunnel written in golang
+    supported_envs:
+      - darwin
+      - amd64
+    asset: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}.{{.Format}}
+    format: gz
+    overrides:
+      - goos: windows
+        format: zip
+        files:
+          - name: gost
+            src: gost-windows-amd64.exe
+    files:
+      - name: gost
+        src: gost-{{.OS}}-{{.Arch}}-{{trimV .Version}}
+    version_constraint: semver(">= 2.11.2")
+    version_overrides:
+      - version_constraint: "true"
+        rosetta2: true

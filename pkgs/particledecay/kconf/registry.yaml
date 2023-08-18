@@ -1,0 +1,15 @@
+packages:
+  - type: github_release
+    repo_owner: particledecay
+    repo_name: kconf
+    asset: kconf-{{.OS}}-{{.Arch}}-{{trimV .Version}}.tar.gz
+    description: Manage multiple kubeconfigs easily
+    replacements:
+      amd64: x86_64
+    supported_envs:
+      - linux
+      - darwin
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256

@@ -1,0 +1,17 @@
+packages:
+  - type: github_release
+    repo_owner: container-tools
+    repo_name: spectrum
+    asset: spectrum_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+    description: A lightweight super-fast container image builder
+    replacements:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+    supported_envs:
+      - linux
+      - darwin
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256

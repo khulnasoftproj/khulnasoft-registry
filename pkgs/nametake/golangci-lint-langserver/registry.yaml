@@ -1,0 +1,16 @@
+packages:
+  - type: github_release
+    repo_owner: nametake
+    repo_name: golangci-lint-langserver
+    asset: golangci-lint-langserver_{{.OS}}_{{.Arch}}.tar.gz
+    description: golangci-lint language server
+    replacements:
+      amd64: x86_64
+    supported_envs:
+      - linux
+      - darwin
+    rosetta2: true
+    checksum:
+      type: github_release
+      asset: golangci-lint-langserver_{{trimV .Version}}_checksums.txt
+      algorithm: sha256

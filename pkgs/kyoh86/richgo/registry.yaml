@@ -1,0 +1,13 @@
+packages:
+  - type: github_release
+    repo_owner: kyoh86
+    repo_name: richgo
+    description: Enrich `go test` outputs with text decorations
+    supported_envs:
+      - darwin
+      - linux
+    asset: richgo_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+    checksum:
+      type: github_release
+      asset: richgo_{{trimV .Version}}_checksums.txt
+      algorithm: sha256

@@ -1,0 +1,9 @@
+---
+# khulnasoft - Declarative CLI Version Manager
+# https://khulnasoftproj.github.io/
+registries:
+  - name: standard
+    type: local
+    path: ../registry.yaml
+packages:
+  - import: ../pkgs/sulaiman-coder/ci-info/pkg.yaml

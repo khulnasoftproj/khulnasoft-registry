@@ -1,0 +1,15 @@
+packages:
+  - type: github_release
+    repo_owner: extrawurst
+    repo_name: gitui
+    rosetta2: true
+    asset: gitui-{{.OS}}.tar.gz
+    supported_envs:
+      - windows
+      - darwin
+      - linux/amd64
+    description: Blazing fast terminal-ui for git written in rust
+    replacements:
+      darwin: mac
+      linux: linux-musl
+      windows: win

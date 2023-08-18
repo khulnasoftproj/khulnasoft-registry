@@ -1,0 +1,15 @@
+packages:
+  - type: github_release
+    repo_owner: noahgorstein
+    repo_name: jqp
+    asset: jqp_{{trimV .Version}}_{{.OS}}_{{.Arch}}.tar.gz
+    description: A TUI playground to experiment with jq
+    replacements:
+      amd64: x86_64
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256

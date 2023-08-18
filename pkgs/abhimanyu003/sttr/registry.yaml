@@ -1,0 +1,14 @@
+packages:
+  - type: github_release
+    repo_owner: abhimanyu003
+    repo_name: sttr
+    asset: sttr_{{trimV .Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
+    format: tar.gz
+    description: cross-platform, cli app to perform various operations on string
+    overrides:
+      - goos: darwin
+        asset: sttr_{{trimV .Version}}_{{.OS}}_all.{{.Format}}
+    checksum:
+      type: github_release
+      asset: sttr_{{trimV .Version}}_checksums.txt
+      algorithm: sha256

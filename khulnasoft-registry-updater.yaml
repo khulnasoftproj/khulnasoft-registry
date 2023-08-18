@@ -1,0 +1,23 @@
+limit: 150
+container_registry:
+  registry: ghcr.io
+  reopsitory: khulnasoftproj/khulnasoft-registry
+  auth:
+    username: sulaiman-coder
+templates:
+  pr_body: >
+    [{{.NewVersion}}]({{.ReleaseURL}}) [compare]({{.CompareURL}})
+
+    This pull request was created by khulnasoft-registry-updater.
+ignore_packages:
+  # asset isn't released anymore
+  - grafana/xk6
+  - lotabout/skim
+  - google/jsonnet
+  - sulaiman-coder/checkout-merged-branch-with-ci-info
+  - sulaiman-coder/ci-renovate-config-validator
+  - sulaiman-coder/discussion-slack-notifier
+  - sigstore/sget
+  - github/licensed
+  # IP restriction
+  - bridgecrewio/yor

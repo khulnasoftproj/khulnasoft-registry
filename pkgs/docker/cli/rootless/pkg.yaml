@@ -1,0 +1,2 @@
+packages:
+  - name: docker/cli/rootless@v24.0.5

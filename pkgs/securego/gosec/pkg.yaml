@@ -1,0 +1,2 @@
+packages:
+  - name: securego/gosec@v2.17.0
